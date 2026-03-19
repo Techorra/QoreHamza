@@ -18,8 +18,8 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #ffffff;
-    color: #1a1a1a;
+    background-color: #111111;
+    color: #ffffff;
     line-height: 1.6;
 }
 
@@ -46,13 +46,13 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(17, 17, 17, 0.95);
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
@@ -75,7 +75,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #666;
+    color: #888;
 }
 
 .mobile-menu-btn {
@@ -96,7 +96,7 @@ nav a:hover {
     align-items: center;
     justify-content: center;
     padding: 120px 40px 80px;
-    background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+    background: linear-gradient(180deg, #111111 0%, #1a1a1a 100%);
 }
 
 .hero-content {
@@ -121,13 +121,13 @@ nav a:hover {
 
 .hero-subtitle {
     font-size: 1.5rem;
-    color: #666;
+    color: #aaa;
     margin-bottom: 20px;
 }
 
 .hero-description {
     font-size: 1.1rem;
-    color: #666;
+    color: #aaa;
     margin-bottom: 30px;
     line-height: 1.8;
 }
@@ -232,7 +232,7 @@ section {
 
 .about-text p {
     font-size: 1.1rem;
-    color: #666;
+    color: #aaa;
     margin-bottom: 20px;
     line-height: 1.8;
 }
@@ -242,7 +242,7 @@ section {
     align-items: flex-start;
     margin-bottom: 20px;
     padding: 15px;
-    background: #f8f8f8;
+    background: #1a1a1a;
     border-radius: 10px;
 }
 
@@ -254,7 +254,7 @@ section {
 }
 
 .about-card {
-    background: #f8f8f8;
+    background: #1a1a1a;
     padding: 30px;
     border-radius: 15px;
 }
@@ -286,7 +286,7 @@ section {
 }
 
 .skill-card {
-    background: #f8f8f8;
+    background: #1a1a1a;
     padding: 25px;
     border-radius: 15px;
     transition: transform 0.3s;
@@ -321,7 +321,7 @@ section {
 
 .skill-card p {
     font-size: 0.95rem;
-    color: #666;
+    color: #aaa;
     margin-bottom: 15px;
 }
 
@@ -343,7 +343,7 @@ section {
 
 /* Services Section */
 .services-section {
-    background: #f8f8f8;
+    background: #1a1a1a;
     max-width: 100%;
 }
 
@@ -362,7 +362,7 @@ section {
 }
 
 .service-card {
-    background: #fff;
+    background: #222222;
     padding: 40px 30px;
     border-radius: 15px;
     text-align: center;
@@ -394,7 +394,7 @@ section {
 
 .service-card p {
     font-size: 0.95rem;
-    color: #666;
+    color: #aaa;
     line-height: 1.6;
 }
 
@@ -415,7 +415,7 @@ section {
 }
 
 .contact-info > p {
-    color: #666;
+    color: #aaa;
     margin-bottom: 30px;
 }
 
@@ -424,7 +424,7 @@ section {
     align-items: center;
     margin-bottom: 20px;
     padding: 15px;
-    background: #f8f8f8;
+    background: #1a1a1a;
     border-radius: 10px;
 }
 
@@ -470,17 +470,17 @@ section {
     width: 100%;
     padding: 15px 20px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #333;
     border-radius: 10px;
     font-size: 1rem;
-    background: #f8f8f8;
+    background: #1a1a1a;
+    color: #fff;
     transition: border-color 0.3s;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: #1a1a1a;
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #666;
 }
 
 .contact-form textarea {
