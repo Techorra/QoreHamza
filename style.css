@@ -476,34 +476,77 @@ section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
 /* Skills */
 .skills { padding-top: 4rem; }
 .skills .section-title { text-align: center; }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; max-width: 900px; margin: 0 auto; }
-.skill-card { padding: 1.5rem; }
-.skill-info { display: flex; justify-content: space-between; margin-bottom: 0.75rem; }
-.skill-name { font-weight: 600; font-size: 1rem; color: var(--text-primary); }
-.skill-level { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
-.progress-bar { height: 6px; background: rgba(255, 255, 255, 0.05); border-radius: 3px; overflow: hidden; }
-.progress { 
-    height: 100%; 
-    background: linear-gradient(90deg, var(--accent), rgba(0, 255, 136, 0.5)); 
-    border-radius: 3px; 
-    animation: fillProgress 1.5s ease-out forwards; 
+
+.skills-circular {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.skill-circle {
     position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.progress::after {
-    content: '';
+.skill-circle svg {
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
 }
 
-@keyframes fillProgress { from { width: 0; } }
+.skill-circle circle {
+    fill: none;
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.skill-circle .bg {
+    stroke: rgba(255, 255, 255, 0.05);
+}
+
+.skill-circle .progress {
+    stroke: var(--accent);
+    stroke-dasharray: 283;
+    stroke-dashoffset: calc(283 - (283 * var(--percent) / 100));
+    transition: stroke-dashoffset 1.5s ease-out;
+    filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.skill-percent {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    z-index: 1;
+}
+
+.skill-name {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-weight: 500;
+}
+
+/* Responsive circular skills */
+@media (max-width: 600px) {
+    .skill-circle {
+        width: 120px;
+        height: 120px;
+    }
+    .skill-percent {
+        font-size: 1.25rem;
+    }
+}
 
 /* Contact */
 .contact { padding-top: 4rem; }
