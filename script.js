@@ -52,3 +52,57 @@ if (scrollTopBtn) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
+
+// Typing Animation for Hero Section
+const typedText = document.querySelector('.typed-text');
+if (typedText) {
+    const roles = [
+        'Data Specialist',
+        'Power BI Developer',
+        'Python Expert',
+        'SQL Analyst',
+        'Frontend Developer',
+        'Data Engineer'
+    ];
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function typeEffect() {
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            typedText.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            typedText.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+        
+        if (!isDeleting && charIndex === currentRole.length) {
+            isDeleting = true;
+            typingSpeed = 2000; // Pause at end
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typingSpeed = 500; // Pause before next word
+        }
+        
+        setTimeout(typeEffect, typingSpeed);
+    }
+    
+    // Start typing effect
+    setTimeout(typeEffect, 1000);
+}
+
+// Cursor blinking animation
+const cursor = document.querySelector('.cursor');
+if (cursor) {
+    setInterval(() => {
+        cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+    }, 500);
+}
