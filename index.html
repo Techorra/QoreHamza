@@ -169,14 +169,25 @@ section {
   font-weight: 300;
   line-height: .95;
   letter-spacing: -.02em;
-  color: var(--text);
-  opacity: 0; animation: riseUp .9s .35s ease forwards;
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    rgba(200,210,230,0.65) 30%,
+    #ffffff 50%,
+    rgba(180,195,220,0.55) 70%,
+    #ffffff 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: riseUp .9s .35s ease both, shimmer 6s linear 1.3s infinite;
+}
+@keyframes shimmer {
+  0%   { background-position: 0% center; }
+  100% { background-position: 250% center; }
 }
 .hero-name em {
   font-style: italic;
-  background: linear-gradient(135deg, #ffffff 0%, rgba(200,210,230,0.7) 100%);
-  -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero-role {
@@ -292,7 +303,7 @@ section {
 }
 
 .about-inner {
-  max-width: 1100px; width: 100%;
+  max-width: 1200px; width: 100%;
   display: grid; grid-template-columns: 1fr 1.1fr;
   gap: 60px; align-items: center;
 }
@@ -447,7 +458,7 @@ section {
 .skill-icon svg { display: block; }
 #skills { }
 
-.skills-inner { max-width: 1100px; width: 100%; }
+.skills-inner { max-width: 1200px; width: 100%; }
 .skills-inner .section-sup { margin-bottom: 12px; }
 .skills-inner .section-heading { margin-bottom: 56px; }
 
@@ -506,7 +517,7 @@ section {
   border-bottom: 1px solid var(--border);
 }
 
-.services-inner { max-width: 1100px; width: 100%; }
+.services-inner { max-width: 1200px; width: 100%; }
 
 .services-grid {
   display: grid;
@@ -583,7 +594,7 @@ section {
 #contact { }
 
 .contact-inner {
-  max-width: 1100px; width: 100%;
+  max-width: 1200px; width: 100%;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 60px; align-items: start;
 }
@@ -888,6 +899,121 @@ footer {
   #cursor, #cursor-ring { display: none; }
   body { cursor: auto; }
 }
+/* ─── PAGE LOADER ───────────────────────────────── */
+#loader {
+  position: fixed; inset: 0; z-index: 10000;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 20px;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+#loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-initials {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; font-weight: 300;
+  letter-spacing: .1em;
+  background: linear-gradient(120deg, #fff 0%, rgba(200,210,230,0.6) 50%, #fff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.8s linear infinite;
+}
+.loader-initials em { font-style: italic; }
+
+.loader-bar-wrap {
+  width: 120px; height: 1px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px; overflow: hidden;
+}
+.loader-bar {
+  height: 100%; width: 0%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7), transparent);
+  animation: loaderFill 1.6s ease forwards;
+}
+@keyframes loaderFill {
+  0%   { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ─── HERO SPINNING SHAPES ──────────────────────── */
+.hero-shapes {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+  z-index: 0;
+}
+.shape {
+  position: absolute;
+  border: 1px solid rgba(255,255,255,0.07);
+  opacity: 0;
+  animation: shapeAppear .8s ease forwards, shapeSpin linear infinite;
+}
+@keyframes shapeAppear {
+  to { opacity: 1; }
+}
+/* circles */
+.shape-circle { border-radius: 50%; }
+
+.shape-c1 {
+  width: 320px; height: 320px;
+  top: 8%; right: 6%;
+  animation-delay: 1.4s, 1.4s;
+  animation-duration: .8s, 28s;
+}
+.shape-c2 {
+  width: 180px; height: 180px;
+  bottom: 14%; left: 4%;
+  border-color: rgba(255,255,255,0.05);
+  animation-delay: 1.7s, 1.7s;
+  animation-duration: .8s, 20s;
+  animation-direction: normal, reverse;
+}
+.shape-c3 {
+  width: 80px; height: 80px;
+  top: 22%; left: 12%;
+  border-color: rgba(255,255,255,0.09);
+  animation-delay: 2s, 2s;
+  animation-duration: .8s, 14s;
+}
+
+/* squares */
+.shape-square { border-radius: 4px; }
+
+.shape-s1 {
+  width: 90px; height: 90px;
+  top: 18%; right: 22%;
+  animation-delay: 1.6s, 1.6s;
+  animation-duration: .8s, 18s;
+  animation-direction: normal, reverse;
+}
+.shape-s2 {
+  width: 50px; height: 50px;
+  bottom: 22%; right: 10%;
+  border-color: rgba(255,255,255,0.06);
+  animation-delay: 2.1s, 2.1s;
+  animation-duration: .8s, 24s;
+}
+.shape-s3 {
+  width: 130px; height: 130px;
+  bottom: 8%; left: 20%;
+  border-color: rgba(255,255,255,0.04);
+  animation-delay: 1.9s, 1.9s;
+  animation-duration: .8s, 32s;
+  animation-direction: normal, reverse;
+}
+/* small dot ring */
+.shape-c4 {
+  width: 40px; height: 40px;
+  top: 60%; right: 28%;
+  border-color: rgba(255,255,255,0.1);
+  animation-delay: 2.3s, 2.3s;
+  animation-duration: .8s, 10s;
+}
+
+@keyframes shapeSpin {
+  to { transform: rotate(360deg); }
+}
+
 </style>
 </head>
 <body>
@@ -895,6 +1021,12 @@ footer {
 <!-- cursor -->
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
+
+<!-- ─── PAGE LOADER ──────────────────────────────── -->
+<div id="loader">
+  <div class="loader-initials">H<em>R</em></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
 
 <!-- progress bar -->
 <div id="progress"></div>
@@ -942,6 +1074,17 @@ footer {
 
 <!-- ─── HERO ─────────────────────────────────────── -->
 <section id="hero">
+
+  <!-- spinning shapes -->
+  <div class="hero-shapes">
+    <div class="shape shape-circle shape-c1"></div>
+    <div class="shape shape-circle shape-c2"></div>
+    <div class="shape shape-circle shape-c3"></div>
+    <div class="shape shape-circle shape-c4"></div>
+    <div class="shape shape-square shape-s1"></div>
+    <div class="shape shape-square shape-s2"></div>
+    <div class="shape shape-square shape-s3"></div>
+  </div>
   <div class="hero-eyebrow">Currently at Qorelogix · Islamabad</div>
 
   <h1 class="hero-name">Hamza<br><em>Raja</em></h1>
@@ -1257,6 +1400,12 @@ footer {
 </button>
 
 <script>
+/* ── Page Loader ── */
+const loader = document.getElementById('loader');
+window.addEventListener('load', () => {
+  setTimeout(() => loader.classList.add('hidden'), 1800);
+});
+
 /* ── Hamburger / Mobile Drawer ── */
 const hamburger = document.getElementById('hamburger');
 const drawer = document.getElementById('mobileDrawer');
